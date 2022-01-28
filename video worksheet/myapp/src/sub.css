@@ -1,0 +1,26 @@
+
+.text-box{
+    color:#fff;
+    display: flex;
+    justify-content:center;
+    position: fixed;
+    bottom: 0;
+    left: 40%;
+}
+.sub{   
+    padding: 20px;
+    background: #fff;
+    color: #000;
+    font-size: 20px;
+    font-weight: 900px;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    font-size:40px;
+}
+.sub a{
+    color: purple;
+    box-shadow: 0 0 40px gold;
+    padding-left: 10px;
+    padding-right: 10px;
+}
