@@ -1,26 +1,25 @@
 
 .text-box{
     position:absolute;
-    color:#fff;
     display: flex;
     justify-content:center;
     bottom: 0;
     left: 40%;
 }
 .sub{   
-    padding: 20px;
+    padding: 10px;
     background: #fff;
     color: #000;
-    font-size: 20px;
-    font-weight: 900px;
-    z-index: 1;
     display: flex;
     justify-content: space-between;
     font-size:40px;
+    font-family: 'Roboto Slab', serif;
 }
 .sub a{
-    color: purple;
-    box-shadow: 0 0 40px gold;
+    color: black;
+    text-decoration: none;
+    text-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px gold, 0 0 40px gold, 0 0 50px gold, 0 0 60px gold, 0 0 70px gold;
     padding-left: 10px;
     padding-right: 10px;
+    border-bottom: 5px purple solid;
 }
