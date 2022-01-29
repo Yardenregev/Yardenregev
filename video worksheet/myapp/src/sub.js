@@ -1,4 +1,5 @@
 import './sub.css';
+import Text from './word.js';
 function Sub() {
     return (
       <div className="Sub">
@@ -8,6 +9,7 @@ function Sub() {
                       <a href="http://google.com" className ="term">
                           world
                       </a>
+                      <Text/>
               </div>
           </div>
       </div>
