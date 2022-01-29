@@ -5,10 +5,6 @@ function Sub() {
       <div className="Sub">
           <div className="text-box">
               <div className = "sub">
-                      Hello 
-                      <a href="http://google.com" className ="term">
-                          world
-                      </a>
                       <Text/>
               </div>
           </div>
