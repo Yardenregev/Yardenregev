@@ -4,7 +4,6 @@ let words =
         value : "Hello",
         isTerm : "",
         timeStamp : "",
-        search : "google.com/${this.value}",
         pause : () => {
 
         },
@@ -20,7 +19,6 @@ let words =
         value : "World",
         isTerm : "term",
         timeStamp : "00:00:00",
-        search : "http://www.google.com",
         pause : () => {
 
         },
@@ -35,21 +33,19 @@ let words =
 
 ];
 
-function Search (value) {
-
-}
 
 function Text() {
     const text = words.map (
         word => <span key={word.value} className= {word.isTerm} onClick = {() => {
                                                                             if (word.isTerm === "term")
                                                                             {
-                                                                            var script = `http://www.google.com/search?q=`;
-                                                                            script += `${word.value}`;
-                                                                            window.location.href = script;
+                                                                            var search = `http://www.google.com/search?q=`;
+                                                                            search += `${word.value}`;
+                                                                            window.location.href = search;
                                                                             }
                                                                             }}
-                                                                            >{word.value}</span>);
+                                                                            >
+                                                                            {word.value}</span>);
     return text;
 }
 
