@@ -1,6 +1,6 @@
-import './page.css';
-import Earth from './earth.mp4';
-import Sub from './sub.js';
+import './video_page.css';
+import Earth from './Videos/earth.mp4';
+import Sub from './Components/Sub/sub.js';
 function App() {
   return (
     
