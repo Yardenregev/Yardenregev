@@ -2,6 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App/video_page.js';
 import reportWebVitals from './reportWebVitals';
+import {Provider} from 'react-redux';
+import {createStore, applyMiddleware, compose} from 'redux';
+import thunk from 'redux-thunk';
+import reducers from './Reducers';
+const store = createStore(reducers,compose(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <React.StrictMode>
