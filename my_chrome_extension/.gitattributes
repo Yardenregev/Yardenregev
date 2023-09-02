@@ -1,1 +1,2 @@
 my_chrome_extensio/node_modules/* filter=lfs diff=lfs merge=lfs -text
+node_modules/** filter=lfs diff=lfs merge=lfs -text
