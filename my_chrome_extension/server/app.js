@@ -116,7 +116,22 @@ app.get('/bookmarks/:video_id', (req, res) => {
     });
 });
   
-  // ... Add routes for updating and deleting video links and bookmarks
+// Delete a bookmark for a specific video
+app.delete('/bookmarks/:bookmark_id', (req, res) => {
+  const { bookmark_id } = req.params;
+  console.log(`Deleting bookmark ${bookmark_id}`);
   
-  // ...
-  
+  const query = 'DELETE FROM bookmarks WHERE bookmark_id = ?';
+  db.query(query, [bookmark_id], (err, result) => {
+    if (err) {
+      console.error('Error deleting bookmark:', err);
+      res.status(500).json({ error: 'Error deleting bookmark' });
+    } else {
+      if (result.affectedRows === 0) {
+        res.status(404).json({ message: 'Bookmark not found' });
+      } else {
+        res.json({ message: 'Bookmark deleted successfully' });
+      }
+    }
+  });
+});

@@ -58,6 +58,39 @@ const serverUrl = "http://localhost:3000";
       });
   };
 
+  const deleteBookmark = async (givenBookmarkTime) => {
+    let currentVideoObj = await fetchVideo();
+    let bookMarkToDelete = null;
+    console.log("current video is " + currentVideoObj.video_id);
+    currentVideoBookmarks = await fetchBookmarks(currentVideoObj.video_id);
+    console.log("current video bookmarks are " + currentVideoBookmarks);
+
+    for (let i = 0; i < currentVideoBookmarks.length; i++) {
+      if (currentVideoBookmarks[i].bookmark_time == givenBookmarkTime){
+        bookMarkToDelete = currentVideoBookmarks[i];
+      }
+    }
+    if (bookMarkToDelete == null){
+      return;
+    }
+    let request = serverUrl + "/bookmarks/" + bookMarkToDelete.bookmark_id;
+    console.log(request);
+    fetch(request, {
+      method: "DELETE"
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error('Request failed:', response.status, response.statusText);
+      }
+      return response.json();
+    }).then(responseData => {
+      console.log(responseData);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+
+  }
+
   const addNewBookmarkEventHandler = async () => {
     let currentTime = youtubePlayer.currentTime;
     console.log("HERE")
@@ -126,14 +159,17 @@ const serverUrl = "http://localhost:3000";
   };
 
   chrome.runtime.onMessage.addListener((obj, sender, response) => {
-    const { type, value, videoId } = obj;
-    console.log("type, value, videoId", type, value, videoId);
+    const { type, value, videoLink } = obj;
+    console.log("type, value, videoLink", type, value, videoLink);
     if (type === "NEW") {
-      currentVideo = videoId;
+      currentVideo = videoLink;
       newVideoLoaded();
     }
     else if (type === "PLAY"){
       youtubePlayer.currentTime = value;
+    }
+    else if (type === "DELETE"){
+      deleteBookmark(value);
     }
   });
 

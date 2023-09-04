@@ -6,10 +6,8 @@ chrome.tabs.onUpdated.addListener((tabId, tab) => {
 
     chrome.tabs.sendMessage(tabId, {
       type: "NEW",
-      videoId: urlParameters.get("v"),
+      videoLink: urlParameters.get("v"),
     }, (response) => {
-      if (chrome.runtime.lastError) {
-        console.error(chrome.runtime.lastError);
-      }});
+      });
   }
 });

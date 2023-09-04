@@ -63,9 +63,7 @@ const viewBookmarks = (currentBookmarks=[]) => {
   return;
 };
 
-const onPlay = async e => {
-  const bookmarkTime = e.target.parentNode.parentNode.getAttribute("timestamp");
-  const activeTab = await getActiveTabURL();
+const translateBookmarkTimeToSeconds = (bookmarkTime) => {
   const timeParts = bookmarkTime.split(':');
   const hours = parseInt(timeParts[0], 10);
   const minutes = parseInt(timeParts[1], 10);
@@ -73,6 +71,15 @@ const onPlay = async e => {
 
   // Calculate the total time in seconds
   const bookmarkTimeInSeconds = hours * 3600 + minutes * 60 + seconds;
+
+  return bookmarkTimeInSeconds;
+}
+
+const onPlay = async e => {
+  const bookmarkTime = e.target.parentNode.parentNode.getAttribute("timestamp");
+  const activeTab = await getActiveTabURL();
+  const bookmarkTimeInSeconds = translateBookmarkTimeToSeconds(bookmarkTime);
+
   chrome.tabs.sendMessage(activeTab.id, {
     type: "PLAY",
     value: bookmarkTimeInSeconds,
@@ -85,6 +92,7 @@ const onDelete = async e => {
   const bookmarkElementToDelete = document.getElementById(
     "bookmark-" + bookmarkTime
   );
+
 
   bookmarkElementToDelete.parentNode.removeChild(bookmarkElementToDelete);
 
