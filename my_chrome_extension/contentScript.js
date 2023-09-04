@@ -132,6 +132,9 @@ const serverUrl = "http://localhost:3000";
       currentVideo = videoId;
       newVideoLoaded();
     }
+    else if (type === "PLAY"){
+      youtubePlayer.currentTime = value;
+    }
   });
 
   // newVideoLoaded();

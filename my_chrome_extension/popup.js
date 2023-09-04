@@ -66,10 +66,16 @@ const viewBookmarks = (currentBookmarks=[]) => {
 const onPlay = async e => {
   const bookmarkTime = e.target.parentNode.parentNode.getAttribute("timestamp");
   const activeTab = await getActiveTabURL();
+  const timeParts = bookmarkTime.split(':');
+  const hours = parseInt(timeParts[0], 10);
+  const minutes = parseInt(timeParts[1], 10);
+  const seconds = parseInt(timeParts[2], 10);
 
+  // Calculate the total time in seconds
+  const bookmarkTimeInSeconds = hours * 3600 + minutes * 60 + seconds;
   chrome.tabs.sendMessage(activeTab.id, {
     type: "PLAY",
-    value: bookmarkTime,
+    value: bookmarkTimeInSeconds,
   });
 };
 
