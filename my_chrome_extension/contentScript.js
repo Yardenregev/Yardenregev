@@ -20,7 +20,7 @@ const serverUrl = "http://localhost:3000";
   };
 
   const createNewVideo = () => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
     console.log("creating new video ", currentVideo);
     let requestBody = {
       video_link : currentVideo
@@ -40,9 +40,11 @@ const serverUrl = "http://localhost:3000";
       return response.json();
     }).then(responseData => {
       console.log(responseData);
+      resolve(responseData);
     })
     .catch(error => {
       console.error('Error:', error);
+      reject(error);
     });
   });
   }
@@ -96,7 +98,8 @@ const serverUrl = "http://localhost:3000";
     console.log("HERE")
     let currentVideoObj = await fetchVideo();
     if (currentVideoObj.video_id == undefined) {
-      await createNewVideo();
+      let resp = await createNewVideo();
+      console.log("now fetching new video after getting ", resp);
       currentVideoObj = await fetchVideo();
     }
     console.log("current video is " + currentVideoObj.video_id +", "+ currentVideoObj.video_link)

@@ -99,7 +99,16 @@ const onDelete = async e => {
   chrome.tabs.sendMessage(activeTab.id, {
     type: "DELETE",
     value: bookmarkTime,
-  }, viewBookmarks);
+  });
+
+  let videoId = await fetchVideoId(currentVideo);
+    console.log("videoId: " + videoId);
+    let currentVideoBookmarks = []
+    if (videoId != undefined) {
+       currentVideoBookmarks = await fetchBookmarks(videoId);
+    }
+  viewBookmarks(currentVideoBookmarks);
+
 };
 
 const setBookmarkAttributes =  (src, eventListener, controlParentElement) => {
