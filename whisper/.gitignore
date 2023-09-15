@@ -1,0 +1,8 @@
+# Ignore all files inside the specified directories
+/Include/*
+/Lib/*
+/Scripts/*
+/Share/*
+
+# Ignore the pyvenv.cfg file
+pyvenv.cfg
