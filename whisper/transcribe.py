@@ -1,7 +1,7 @@
 import whisper
 import os
 model = whisper.load_model("base")
-file_index = 1
+file_index = 0
 while True:
     try:
         file_name = f"recorded_audio_{file_index}.mp3"
