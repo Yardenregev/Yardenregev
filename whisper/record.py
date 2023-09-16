@@ -9,10 +9,16 @@ import time
 def record_and_save_audio(base_filename, duration_seconds=10):
     CHUNK = 1024
     FORMAT = pyaudio.paInt16
-    CHANNELS = 1
+    CHANNELS = 2
     RATE = 44100
 
     audio = pyaudio.PyAudio()
+
+    for i in range(audio.get_device_count()):
+        dev = audio.get_device_info_by_index(i)
+        if (dev['name'] == 'Stereo Mix (Realtek(R) Audio)' and dev['hostApi'] == 0):
+            dev_index = dev['index']
+            print('dev_index', dev_index)
 
     def signal_handler(sig, frame):
         print("Recording stopped by user (Ctrl+C)")
@@ -25,6 +31,7 @@ def record_and_save_audio(base_filename, duration_seconds=10):
                         channels=CHANNELS,
                         rate=RATE,
                         input=True,
+                        input_device_index=dev_index,
                         frames_per_buffer=CHUNK)
 
     print("Recording... Press Ctrl+C to stop.")
