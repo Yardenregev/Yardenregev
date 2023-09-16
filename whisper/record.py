@@ -6,6 +6,11 @@ import os
 import signal
 import time
 
+
+class NotEnabledStereoMixException(Exception):
+    def __init__(self, message="Please enable stereo mix"):
+        super().__init__(message)
+
 def record_and_save_audio(base_filename, duration_seconds=10):
     CHUNK = 1024
     FORMAT = pyaudio.paInt16
@@ -14,11 +19,15 @@ def record_and_save_audio(base_filename, duration_seconds=10):
 
     audio = pyaudio.PyAudio()
 
+    dev_index = None
     for i in range(audio.get_device_count()):
         dev = audio.get_device_info_by_index(i)
         if (dev['name'] == 'Stereo Mix (Realtek(R) Audio)' and dev['hostApi'] == 0):
             dev_index = dev['index']
             print('dev_index', dev_index)
+
+    if dev_index is None:
+        raise NotEnabledStereoMixException() 
 
     def signal_handler(sig, frame):
         print("Recording stopped by user (Ctrl+C)")
