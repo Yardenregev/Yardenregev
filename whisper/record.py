@@ -6,28 +6,29 @@ import os
 import signal
 import time
 
+from utils.recorder import Recorder
 
 class NotEnabledStereoMixException(Exception):
     def __init__(self, message="Please enable stereo mix"):
         super().__init__(message)
 
-def record_and_save_audio(base_filename, duration_seconds=10):
-    CHUNK = 1024
-    FORMAT = pyaudio.paInt16
-    CHANNELS = 2
-    RATE = 44100
+def record_and_save_audio(recorder, base_filename, duration_seconds=10):
+    # CHUNK = 1024
+    # FORMAT = pyaudio.paInt16
+    # CHANNELS = 2
+    # RATE = 44100
 
-    audio = pyaudio.PyAudio()
+    # audio = pyaudio.PyAudio()
 
-    dev_index = None
-    for i in range(audio.get_device_count()):
-        dev = audio.get_device_info_by_index(i)
-        if (dev['name'] == 'Stereo Mix (Realtek(R) Audio)' and dev['hostApi'] == 0):
-            dev_index = dev['index']
-            print('dev_index', dev_index)
+    # dev_index = None
+    # for i in range(audio.get_device_count()):
+    #     dev = audio.get_device_info_by_index(i)
+    #     if (dev['name'] == 'Stereo Mix (Realtek(R) Audio)' and dev['hostApi'] == 0):
+    #         dev_index = dev['index']
+    #         print('dev_index', dev_index)
 
-    if dev_index is None:
-        raise NotEnabledStereoMixException() 
+    # if dev_index is None:
+    #     raise NotEnabledStereoMixException() 
 
     def signal_handler(sig, frame):
         print("Recording stopped by user (Ctrl+C)")
@@ -36,12 +37,12 @@ def record_and_save_audio(base_filename, duration_seconds=10):
 
     signal.signal(signal.SIGINT, signal_handler)
 
-    stream = audio.open(format=FORMAT,
-                        channels=CHANNELS,
-                        rate=RATE,
-                        input=True,
-                        input_device_index=dev_index,
-                        frames_per_buffer=CHUNK)
+    # stream = audio.open(format=FORMAT,
+    #                     channels=CHANNELS,
+    #                     rate=RATE,
+    #                     input=True,
+    #                     input_device_index=dev_index,
+    #                     frames_per_buffer=CHUNK)
 
     print("Recording... Press Ctrl+C to stop.")
     frames = []
@@ -51,12 +52,14 @@ def record_and_save_audio(base_filename, duration_seconds=10):
 
     try:
         while recording:
-            data = stream.read(CHUNK)
-            frames.append(data)
+            # data = stream.read(CHUNK)
+            # frames.append(data)
+            recorder.record(frames)
             elapsed_time = time.time() - start_time
             if elapsed_time >= duration_seconds:
                 start_time = time.time()
-                save_audio(frames, base_filename, file_counter, CHANNELS, FORMAT, RATE)
+                # save_audio(frames, base_filename, file_counter, CHANNELS, FORMAT, RATE)
+                save_audio(frames, base_filename, file_counter, recorder.channels, recorder.format, recorder.rate)
                 frames = []
                 file_counter += 1
     except KeyboardInterrupt:
@@ -64,13 +67,13 @@ def record_and_save_audio(base_filename, duration_seconds=10):
 
     # Save any remaining audio data
     if frames:
-        save_audio(frames, base_filename, file_counter, CHANNELS, FORMAT, RATE)
+        save_audio(frames, base_filename, file_counter, recorder.channels, recorder.format, recorder.rate)
 
     print("Finished recording!")
 
-    stream.stop_stream()
-    stream.close()
-    audio.terminate()
+    # stream.stop_stream()
+    # stream.close()
+    # audio.terminate()
 
 def save_audio(frames, base_filename, file_counter, channels, format, rate):
     temp_wav_file = f"{base_filename}_{file_counter}.wav"
@@ -93,7 +96,18 @@ def convert_wav_to_mp3(wav_filename, mp3_filename):
 
 if __name__ == "__main__":
     base_filename = "recorded_audio"
-    try:
-        record_and_save_audio(base_filename, duration_seconds=3)
-    except Exception as e:
-        print(f"An error occurred: {str(e)}")
+
+    recorder = Recorder()
+    devices = recorder.get_available_devices()
+    device_name = "Stereo Mix (Realtek(R) Audio)"
+    ret = recorder.set_device(device_name)
+    if not ret:
+        print("Failed to find device ", device_name)
+    else:
+        recorder.open_stream()
+        try:
+            record_and_save_audio(recorder, base_filename, duration_seconds=3)
+        except Exception as e:
+            print(f"An error occurred: {str(e)}")
+
+    
