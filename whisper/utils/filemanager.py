@@ -2,15 +2,17 @@ import pyaudio
 import wave
 from pydub import AudioSegment
 from utils.recorder import Recorder
-from os import remove as rm_file
+import os
 
 class FileManager():
 
-    def __init__(self, recorder:Recorder, base_filename:str):
-        self.channels = recorder.channels
-        self.format = recorder.format
-        self.rate = recorder.rate
-        self.base_filename = base_filename
+    def __init__(self, recorder:Recorder = None, base_filename:str = None):
+        if recorder is not None:
+            self.channels = recorder.channels
+            self.format = recorder.format
+            self.rate = recorder.rate
+        if base_filename is not None:
+            self.base_filename = base_filename
     
     def save_wav_file(self, frames, file_counter):
         wav_file_name = f"{self.base_filename}_{file_counter}.wav"
@@ -29,6 +31,16 @@ class FileManager():
         audio.export(mp3_filename, format="mp3")
 
     def delete_file(self, file_to_delete):
-        rm_file(file_to_delete)
+        os.remove(file_to_delete)
+
+    def write_file(self, file_path, content):
+        try:
+            with open(file_path, 'w') as f:
+                f.write(content)
+        except IOError as e:
+            print(f"An error occurred while writing to the file: {e}")
+    
+    def exists(self, file_path):
+        return os.path.exists(file_path)
 
     
