@@ -31,12 +31,12 @@ class Recorder:
         input_device_index=self.device,
         frames_per_buffer=self.chunk)
     
-    def record(self, frames):
+    def record(self):
         if self.stream is None:
             print("Must open stream first")
             return
         data = self.stream.read(self.chunk)
-        frames.append(data)
+        return data
 
     def get_available_devices(self):
         devices = {}

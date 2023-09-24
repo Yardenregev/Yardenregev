@@ -8,6 +8,7 @@ import time
 
 from utils.recorder import Recorder
 from utils.filemanager import FileManager
+from utils.dataholder import DataHolder
 
 def record_and_save_audio(recorder, file_manager, duration_seconds=10):
 
@@ -19,23 +20,33 @@ def record_and_save_audio(recorder, file_manager, duration_seconds=10):
     signal.signal(signal.SIGINT, signal_handler)
 
     print("Recording... Press Ctrl+C to stop.")
-    frames = []
+    # frames = []
+    data_holder = DataHolder(chunk_size=130)
+    
     recording = True
     start_time = time.time()
     file_counter = 0
 
     try:
         while recording:
-            recorder.record(frames)
+            # recorder.record(frames)
+            data = recorder.record()
+            data_holder.append(data)
+
     except KeyboardInterrupt:
         pass
 
     # Save any remaining audio data
-    if frames:
-        wav_file_name = file_manager.save_wav_file(frames, file_counter)
+    # if frames:
+    #     wav_file_name = file_manager.save_wav_file(frames, file_counter)
+    #     file_manager.convert_wav_to_mp3(wav_file_name)
+    #     file_manager.delete_file(wav_file_name)
+
+    if data_holder.data:
+        wav_file_name = file_manager.save_wav_file(data_holder.data, file_counter)
         file_manager.convert_wav_to_mp3(wav_file_name)
         file_manager.delete_file(wav_file_name)
-
+    
     print("Finished recording!")
 
 if __name__ == "__main__":
