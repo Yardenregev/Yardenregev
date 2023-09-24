@@ -1,5 +1,9 @@
 import pyaudio
 
+class NotEnabledStereoMixException(Exception):
+    def __init__(self, message="Please enable stereo mix"):
+        super().__init__(message)
+
 class Recorder:
     def __init__(self, chunk=1024,
                     format=pyaudio.paInt16,
@@ -49,6 +53,7 @@ class Recorder:
                     dev_index = dev['index']
         
         if dev_index is None:
+            # raise NotEnabledStereoMixException() 
             return False
         self.device = dev_index
         return True

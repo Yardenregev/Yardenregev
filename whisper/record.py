@@ -7,12 +7,9 @@ import signal
 import time
 
 from utils.recorder import Recorder
+from utils.filemanager import FileManager
 
-class NotEnabledStereoMixException(Exception):
-    def __init__(self, message="Please enable stereo mix"):
-        super().__init__(message)
-
-def record_and_save_audio(recorder, base_filename, duration_seconds=10):
+def record_and_save_audio(recorder, file_manager, duration_seconds=10):
     # CHUNK = 1024
     # FORMAT = pyaudio.paInt16
     # CHANNELS = 2
@@ -57,9 +54,13 @@ def record_and_save_audio(recorder, base_filename, duration_seconds=10):
             recorder.record(frames)
             elapsed_time = time.time() - start_time
             if elapsed_time >= duration_seconds:
+                # print("frame count is", len(frames) )
                 start_time = time.time()
+                wav_file_name = file_manager.save_wav_file(frames, file_counter)
+                file_manager.convert_wav_to_mp3(wav_file_name)
+                file_manager.delete_file(wav_file_name)
                 # save_audio(frames, base_filename, file_counter, CHANNELS, FORMAT, RATE)
-                save_audio(frames, base_filename, file_counter, recorder.channels, recorder.format, recorder.rate)
+                # save_audio(frames, base_filename, file_counter, recorder.channels, recorder.format, recorder.rate)
                 frames = []
                 file_counter += 1
     except KeyboardInterrupt:
@@ -67,7 +68,10 @@ def record_and_save_audio(recorder, base_filename, duration_seconds=10):
 
     # Save any remaining audio data
     if frames:
-        save_audio(frames, base_filename, file_counter, recorder.channels, recorder.format, recorder.rate)
+        # save_audio(frames, base_filename, file_counter, recorder.channels, recorder.format, recorder.rate)
+        wav_file_name = file_manager.save_wav_file(frames, file_counter)
+        file_manager.convert_wav_to_mp3(wav_file_name)
+        file_manager.delete_file(wav_file_name)
 
     print("Finished recording!")
 
@@ -96,8 +100,8 @@ def convert_wav_to_mp3(wav_filename, mp3_filename):
 
 if __name__ == "__main__":
     base_filename = "recorded_audio"
-
     recorder = Recorder()
+    file_manager = FileManager(recorder=recorder, base_filename=base_filename)
     devices = recorder.get_available_devices()
     device_name = "Stereo Mix (Realtek(R) Audio)"
     ret = recorder.set_device(device_name)
@@ -106,7 +110,7 @@ if __name__ == "__main__":
     else:
         recorder.open_stream()
         try:
-            record_and_save_audio(recorder, base_filename, duration_seconds=3)
+            record_and_save_audio(recorder, file_manager, duration_seconds=3)
         except Exception as e:
             print(f"An error occurred: {str(e)}")
 
