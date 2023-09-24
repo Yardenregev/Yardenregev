@@ -13,3 +13,6 @@ class DataHolder():
 
         return self.data[start:end]
     
+    def get_number_of_chunks(self):
+        return int(len(self.data) / self.chunk_size) # TODO retreive info left out because of rounding
+    

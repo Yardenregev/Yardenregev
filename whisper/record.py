@@ -1,10 +1,11 @@
-import pyaudio
-import wave
-from pydub import AudioSegment
-import tempfile
-import os
+# import pyaudio
+# import wave
+# from pydub import AudioSegment
+# import tempfile
+# import os
 import signal
-import time
+# import time
+import traceback
 
 from utils.recorder import Recorder
 from utils.filemanager import FileManager
@@ -24,8 +25,8 @@ def record_and_save_audio(recorder, file_manager, duration_seconds=10):
     data_holder = DataHolder(chunk_size=130)
     
     recording = True
-    start_time = time.time()
-    file_counter = 0
+    # start_time = time.time()
+    # file_counter = 0
 
     try:
         while recording:
@@ -36,17 +37,19 @@ def record_and_save_audio(recorder, file_manager, duration_seconds=10):
     except KeyboardInterrupt:
         pass
 
-    # Save any remaining audio data
-    # if frames:
-    #     wav_file_name = file_manager.save_wav_file(frames, file_counter)
+    # if data_holder.data:
+    #     wav_file_name = file_manager.save_wav_file(data_holder.data, file_counter)
     #     file_manager.convert_wav_to_mp3(wav_file_name)
     #     file_manager.delete_file(wav_file_name)
 
-    if data_holder.data:
-        wav_file_name = file_manager.save_wav_file(data_holder.data, file_counter)
+    number_of_chunks = data_holder.get_number_of_chunks()
+    print("number_of_chunks is ", number_of_chunks)
+    for chunk_index in range(number_of_chunks):
+        chunk_data = data_holder.get_data(chunk_index)
+        wav_file_name = file_manager.save_wav_file(chunk_data, chunk_index)
         file_manager.convert_wav_to_mp3(wav_file_name)
         file_manager.delete_file(wav_file_name)
-    
+
     print("Finished recording!")
 
 if __name__ == "__main__":
@@ -64,5 +67,7 @@ if __name__ == "__main__":
             record_and_save_audio(recorder, file_manager, duration_seconds=3)
         except Exception as e:
             print(f"An error occurred: {str(e)}")
+            traceback.print_exc()
+
 
     
