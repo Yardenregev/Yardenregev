@@ -10,7 +10,7 @@ class DataHolder():
     def get_data(self, chunk_index):
         start = self.chunk_size * chunk_index
         end = (start + self.chunk_size) - 1
-
+        
         return self.data[start:end]
     
     def get_number_of_chunks(self):

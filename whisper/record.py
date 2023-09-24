@@ -1,17 +1,13 @@
-# import pyaudio
-# import wave
-# from pydub import AudioSegment
-# import tempfile
-# import os
 import signal
-# import time
 import traceback
 
 from utils.recorder import Recorder
 from utils.filemanager import FileManager
 from utils.dataholder import DataHolder
 
-def record_and_save_audio(recorder, file_manager, duration_seconds=10):
+FRAMES_PER_SECOND = 44
+
+def record_and_save_audio(recorder, file_manager):
 
     def signal_handler(sig, frame):
         print("Recording stopped by user (Ctrl+C)")
@@ -21,29 +17,21 @@ def record_and_save_audio(recorder, file_manager, duration_seconds=10):
     signal.signal(signal.SIGINT, signal_handler)
 
     print("Recording... Press Ctrl+C to stop.")
-    # frames = []
-    data_holder = DataHolder(chunk_size=130)
+
+    data_holder = DataHolder(chunk_size=(FRAMES_PER_SECOND * 10))
     
     recording = True
-    # start_time = time.time()
-    # file_counter = 0
 
     try:
         while recording:
-            # recorder.record(frames)
             data = recorder.record()
             data_holder.append(data)
 
     except KeyboardInterrupt:
         pass
 
-    # if data_holder.data:
-    #     wav_file_name = file_manager.save_wav_file(data_holder.data, file_counter)
-    #     file_manager.convert_wav_to_mp3(wav_file_name)
-    #     file_manager.delete_file(wav_file_name)
 
     number_of_chunks = data_holder.get_number_of_chunks()
-    print("number_of_chunks is ", number_of_chunks)
     for chunk_index in range(number_of_chunks):
         chunk_data = data_holder.get_data(chunk_index)
         wav_file_name = file_manager.save_wav_file(chunk_data, chunk_index)
@@ -64,7 +52,7 @@ if __name__ == "__main__":
     else:
         recorder.open_stream()
         try:
-            record_and_save_audio(recorder, file_manager, duration_seconds=3)
+            record_and_save_audio(recorder, file_manager)
         except Exception as e:
             print(f"An error occurred: {str(e)}")
             traceback.print_exc()
