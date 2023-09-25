@@ -1,11 +1,12 @@
 import signal
 import traceback
 
+import config
+
 from utils.recorder import Recorder
 from utils.filemanager import FileManager
 from utils.dataholder import DataHolder
 
-FRAMES_PER_SECOND = 44
 
 def record_and_save_audio(recorder, file_manager):
 
@@ -18,7 +19,7 @@ def record_and_save_audio(recorder, file_manager):
 
     print("Recording... Press Ctrl+C to stop.")
 
-    data_holder = DataHolder(chunk_size=(FRAMES_PER_SECOND * 10))
+    data_holder = DataHolder(chunk_size=(config.FRAMES_PER_SECOND * config.RECORDING_LENGTH))
     
     recording = True
 

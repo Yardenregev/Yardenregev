@@ -3,6 +3,7 @@ import wave
 from pydub import AudioSegment
 from utils.recorder import Recorder
 import os
+import json
 
 class FileManager():
 
@@ -42,5 +43,9 @@ class FileManager():
     
     def exists(self, file_path):
         return os.path.exists(file_path)
+    
+    def write_json_file(self, file_path, content):
+        with open(file_path, 'w') as json_file:
+            json.dump(content, json_file)
 
     
