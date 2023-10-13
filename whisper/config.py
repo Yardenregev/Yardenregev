@@ -1,3 +1,3 @@
-RECORDING_LENGTH = 10 #seconds per file
+RECORDING_LENGTH = 5 #seconds per file
 
 FRAMES_PER_SECOND = 44
