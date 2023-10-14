@@ -30,7 +30,7 @@ class FileManager():
         print(mp3_filename)
         audio = AudioSegment.from_wav(wav_file_name)
         audio.export(mp3_filename, format="mp3")
-
+        
     def delete_file(self, file_to_delete):
         os.remove(file_to_delete)
 
