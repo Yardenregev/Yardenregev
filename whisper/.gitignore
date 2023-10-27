@@ -17,3 +17,74 @@ pyvenv.cfg
 #ignore all pycache directories
 */__pycache__/*
 /__pycache__/*
+
+
+
+
+
+# This .gitignore file is designed for Unity projects.
+
+# Unity-specific files
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Ll]ibrary-csharp/
+[Ll]ibrary-burst/
+[Ll]ibrary-il2cpp/
+[Ll]ibrary-webgl/
+[Ll]ibrary/ScriptAssemblies/
+[Ll]ibrary/ShaderCache/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Us]ser[Ss]ettings/
+[Oo]bj/
+[Cr]ashes/
+[Pr]ojectSettings/
+[Me]moryCaptures/
+
+# Visual Studio / Rider / MonoDevelop generated
+[Ee]xported[Oo]bj/
+\.vscode/
+\.idea/
+[Ee]xternalVersions/
+[Ff]tTemp/
+[Uu]nityCaptures/
+[Ff]r/[Ee]ditor/[Bb]uild/
+[Ss]hader[Ss]tencils/
+[Aa]nimation/[Oo]utputs/
+[Tt]errains/
+/[Oo]utputs/
+/[Bb]eatsaber_Temp/
+[Bb]okken/
+[Ss]rp/
+[Ee]clipse/
+[Ee]xportPackage/
+[Tt]humbs/
+
+# macOS
+\._*
+
+# Windows image file caches
+Thumbs.db
+D[Ss]tore
+
+# macOS files that might appear in external disk
+.Spotlight-V100/
+.Trashes
+
+# KER file from Cubiquity
+Cubiquity
+
+# Rider files
+.idea/
+.idea/
+
+# User-specific files
+[Ll]ibrary/ShaderCache/
+
