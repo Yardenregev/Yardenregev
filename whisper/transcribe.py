@@ -1,5 +1,5 @@
 from multiprocessing import Event, Value
-import signal
+# import signal
 
 import config
 from utils.transcriber import Transcriber
@@ -7,12 +7,12 @@ from utils.filemanager import FileManager
 from utils.timestamps import TimeStamps
 from utils.thread_coordinator import ThreadCoordinator
 
-# Define a signal handler to set the shared flag when Ctrl+C is pressed
-def signal_handler(sig, frame):
-    print("transcribe.py received sig")
+# # Define a signal handler to set the shared flag when Ctrl+C is pressed
+# def signal_handler(sig, frame):
+#     print("transcribe.py received sig")
 
 def main(event:Event, flag:Value):
-    signal.signal(signal.SIGINT, signal_handler)
+    # signal.signal(signal.SIGINT, signal_handler)
     file_index = 0
     file_manager = FileManager()
     transcriber = Transcriber("base")

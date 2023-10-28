@@ -8,12 +8,12 @@ from utils.thread_coordinator import ThreadCoordinator
 
 def record_and_save_audio(recorder:Recorder, shared_data_holder:Queue, thread_coordinator:ThreadCoordinator):
 
-    print("Recording... Press Ctrl+C to stop.")
+    print("Recording...")
 
     chunk_size = config.FRAMES_PER_SECOND * config.RECORDING_LENGTH
     frames = []
     try:
-        while not thread_coordinator.shared_exit_flag:
+        while not thread_coordinator.shared_exit_flag.value:
             if len(frames) >= chunk_size:
                 shared_data_holder.put(frames)
                 frames = []

@@ -10,7 +10,7 @@ pyvenv.cfg
 # Ignore all .txt, .json, .mp3 and .wav files
 *.txt
 !requirements.txt
-*.json
+timestamps.json
 *.mp3
 *.wav
 
