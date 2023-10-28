@@ -1,5 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.2);">
+    <ui:VisualElement name="Background" style="background-color: rgba(0, 0, 0, 0.3); position: absolute; flex-grow: 1; width: 100%; height: 100%;" />
+    <ui:VisualElement name="Window" style="flex-grow: 1; align-items: center; justify-content: center;">
         <ui:Label display-tooltip-when-elided="true" name="Loader" style="background-image: url(&apos;project://database/Assets/Textures/RadialLoader.png?fileID=2800000&amp;guid=90201fcb43218534b85b750b3a1bc187&amp;type=3#RadialLoader&apos;); width: 80px; height: 80px; opacity: 0.8;" />
         <ui:Label text="Loading..." display-tooltip-when-elided="true" name="Label" style="-unity-font-style: bold; font-size: 25px; color: rgba(255, 255, 255, 0.7);" />
     </ui:VisualElement>

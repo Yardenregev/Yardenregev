@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:Button display-tooltip-when-elided="true" name="Bookmark_Button" class="bookmark-button" style="justify-content: flex-start; height: auto; min-height: 50px; flex-direction: row; flex-grow: 1; margin-bottom: 0;">
+        <ui:Label text="00:00:00 -" display-tooltip-when-elided="true" name="Timestamp_Label" style="margin-right: 20px;" />
+        <ui:Label text="tfddfgdfg dfg dfgd fgdf " display-tooltip-when-elided="true" name="Transcript_Label" style="white-space: normal; -unity-text-align: middle-left; max-width: 1200px; color: rgb(128, 128, 128); padding-top: 3px; padding-bottom: 3px;" />
+    </ui:Button>
+</ui:UXML>

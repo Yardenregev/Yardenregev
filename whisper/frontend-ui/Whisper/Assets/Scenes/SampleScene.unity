@@ -301,6 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uiDocument: {fileID: 1497959063}
+  _bookmarkButtonTemplate: {fileID: 9197481963319205126, guid: 9279186e406606642a316138cd972369, type: 3}
 --- !u!4 &1497959062
 Transform:
   m_ObjectHideFlags: 0

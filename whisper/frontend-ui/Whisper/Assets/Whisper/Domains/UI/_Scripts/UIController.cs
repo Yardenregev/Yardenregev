@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using Udar.Web;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -10,17 +11,21 @@ namespace Whisper.UI
     public class UIController : MonoBehaviour
     {
         [SerializeField] private UIDocument _uiDocument;
+        [SerializeField] private VisualTreeAsset _bookmarkButtonTemplate;
 
         [Inject] private readonly IDialogUI _dialogUI;
         [Inject] private readonly ILoaderUI _loaderUI;
-        [Inject] private readonly IWebService _webService;
+        [Inject] private readonly RecordRequestService _recordService;
 
+
+        private ScrollView _bookmarksScrollView;
         private Button _startRecordingButton;
         private Button _stopRecordingButton;
         private void Awake()
         {
             _startRecordingButton = _uiDocument.rootVisualElement.Q<Button>("StartRecording_Button");
             _stopRecordingButton = _uiDocument.rootVisualElement.Q<Button>("StopRecording_Button");
+            _bookmarksScrollView = _uiDocument.rootVisualElement.Q<ScrollView>("Bookmarks_ScrollView");
         }
         private void OnEnable()
         {
@@ -35,13 +40,11 @@ namespace Whisper.UI
 
         private async void OnStartRecordingClicked()
         {
-            var request = new WebRequestData().SetURL(WebURL.URL, WeAPIMethods.PostStartRecording);
-
             try
             {
                 _loaderUI.Show("Start recording...");
 
-                var result = await _webService.PostAync(request);
+                await _recordService.StartAsync();
 
                 _startRecordingButton.style.display = DisplayStyle.None;
                 _stopRecordingButton.style.display = DisplayStyle.Flex;
@@ -67,14 +70,25 @@ namespace Whisper.UI
             {
                 _loaderUI.Show("Stop recording...");
 
-                var result = await _webService.GetAync(request);
+                var dic = await _recordService.StopAsync();
 
                 _startRecordingButton.style.display = DisplayStyle.Flex;
                 _stopRecordingButton.style.display = DisplayStyle.None;
 
-                var dic = JsonUtility.FromJson<Dictionary<string, string>>(result);
-                Debug.Log(dic.Count);
-                Debug.Log(result);
+                _bookmarksScrollView.Clear();
+                
+                foreach (var item in dic)
+                {
+                    var elementInstance = _bookmarkButtonTemplate.Instantiate();
+                    var timestampLabel = elementInstance.Q<Label>("Timestamp_Label");
+                    var transcriptLabel = elementInstance.Q<Label>("Transcript_Label");
+
+                    timestampLabel.text = item.Key;
+                    transcriptLabel.text = item.Value;
+
+                    _bookmarksScrollView.Add(elementInstance);
+                }
+
             }
             catch (WebException exe)
             {

@@ -125,6 +125,11 @@
     -unity-text-outline-width: 0;
     letter-spacing: 5px;
     white-space: nowrap;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 1px;
 }
 
 .bookmark-button:hover {
@@ -142,7 +147,7 @@
     color: rgb(255, 255, 255);
     -unity-text-outline-width: 0;
     letter-spacing: 5px;
-    scale: 1.02 1.02;
+    scale: 1.01 1.02;
 }
 
 .bookmark-button:active {
@@ -160,7 +165,7 @@
     color: rgb(255, 153, 0);
     -unity-text-outline-width: 0;
     letter-spacing: 5px;
-    scale: 0.99 0.99;
+    scale: 1 0.99;
 }
 
 .positive-button {

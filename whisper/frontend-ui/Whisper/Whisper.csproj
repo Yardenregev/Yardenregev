@@ -65,6 +65,7 @@
     <Compile Include="Assets\Whisper\_Scripts\Web\WebSerivceInstaller.cs" />
     <Compile Include="Assets\Whisper\_Scripts\Web\WeAPIMethods.cs" />
     <Compile Include="Assets\Whisper\_Scripts\Web\WebURL.cs" />
+    <Compile Include="Assets\Whisper\_Scripts\Web\RecordRequestService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Whisper\_Scripts\Whisper.asmdef" />
@@ -412,6 +413,10 @@
     </Reference>
     <Reference Include="Zenject-usage">
       <HintPath>Assets\Plugins\Zenject\Source\Usage\Zenject-usage.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
