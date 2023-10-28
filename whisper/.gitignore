@@ -29,7 +29,6 @@ pyvenv.cfg
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
-[Bb]uilds/
 [Ll]ogs/
 [Ll]ibrary-csharp/
 [Ll]ibrary-burst/
@@ -40,7 +39,6 @@ pyvenv.cfg
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
-[Bb]uilds/
 [Ll]ogs/
 [Us]ser[Ss]ettings/
 [Oo]bj/
