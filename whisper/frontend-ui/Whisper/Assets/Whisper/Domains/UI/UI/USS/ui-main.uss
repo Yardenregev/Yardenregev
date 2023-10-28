@@ -1,0 +1,164 @@
+.start-record-button {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    height: 40px;
+    width: 200px;
+    -unity-font-style: bold;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    -unity-text-outline-width: 0;
+    letter-spacing: 5px;
+}
+
+.start-record-button:hover {
+    background-color: rgba(41, 41, 41, 0.4);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    -unity-font-style: bold;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    -unity-text-outline-width: 0;
+    letter-spacing: 5px;
+    scale: 1.02 1.02;
+}
+
+.start-record-button:active {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    -unity-font-style: bold;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    -unity-text-outline-width: 0;
+    letter-spacing: 5px;
+    scale: 0.99 0.99;
+}
+
+.recording-button {
+    background-color: rgba(132, 132, 132, 0.37);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    height: 40px;
+    width: 200px;
+    -unity-font-style: bold;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    -unity-text-outline-width: 0;
+    letter-spacing: 5px;
+}
+
+.recording-button:hover {
+    background-color: rgba(164, 163, 163, 0.5);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    -unity-font-style: bold;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    -unity-text-outline-width: 0;
+    letter-spacing: 5px;
+    scale: 1.02 1.02;
+}
+
+.recording-button:active {
+    background-color: rgba(132, 132, 132, 0.37);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    -unity-font-style: bold;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    -unity-text-outline-width: 0;
+    letter-spacing: 5px;
+    scale: 0.99 0.99;
+}
+
+.bookmark-button {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    height: 55px;
+    -unity-font-style: bold;
+    font-size: 18px;
+    color: rgb(255, 153, 0);
+    -unity-text-outline-width: 0;
+    letter-spacing: 5px;
+    white-space: nowrap;
+}
+
+.bookmark-button:hover {
+    background-color: rgba(41, 41, 41, 0.4);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    -unity-font-style: bold;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    -unity-text-outline-width: 0;
+    letter-spacing: 5px;
+    scale: 1.02 1.02;
+}
+
+.bookmark-button:active {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    -unity-font-style: bold;
+    font-size: 18px;
+    color: rgb(255, 153, 0);
+    -unity-text-outline-width: 0;
+    letter-spacing: 5px;
+    scale: 0.99 0.99;
+}

@@ -1,0 +1,16 @@
+{
+    "name": "Whisper.UI",
+    "rootNamespace": "Whisper.UI",
+    "references": [
+        "GUID:dc8d1bc146bd9b242ba0e8596c31b515"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

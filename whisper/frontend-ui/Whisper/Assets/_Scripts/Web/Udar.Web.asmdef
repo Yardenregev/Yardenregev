@@ -1,0 +1,16 @@
+{
+    "name": "Udar.Web",
+    "rootNamespace": "Udar.Web",
+    "references": [
+        "GUID:98a1d5f3874451449b24c2c61c74c6ee"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
