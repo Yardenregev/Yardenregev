@@ -1,7 +1,7 @@
 using System;
 using UnityEngine.Networking;
 
-namespace Whisper
+namespace Udar.Web
 {
     public class WebException : Exception
     {

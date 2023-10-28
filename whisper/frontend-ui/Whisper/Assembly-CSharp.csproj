@@ -62,11 +62,17 @@
     <Analyzer Include="C:\Users\Ofir\.vscode\extensions\visualstudiotoolsforunity.vstuc-0.9.2\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Whisper\Domains\UI\_Scripts\UI\UIController.cs" />
+    <Compile Include="Assets\Whisper\Domains\UI\Domains\Loader UI\_Scripts\LoaderUIInstaller.cs" />
+    <Compile Include="Assets\Whisper\Domains\UI\Domains\Loader UI\_Scripts\LoaderUI.cs" />
+    <Compile Include="Assets\Whisper\Domains\UI\Domains\Loader UI\_Scripts\LoaderRotator.cs" />
+    <Compile Include="Assets\Whisper\Domains\UI\Domains\Dialog UI\_Scripts\DialogUI.cs" />
+    <Compile Include="Assets\Whisper\Domains\UI\Domains\Dialog UI\_Scripts\DialogUIInstaller.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Whisper\Domains\UI\UI\UI.uxml" />
-    <None Include="Assets\Whisper\Domains\UI\UI\USS\ui-main.uss" />
+    <None Include="Assets\Whisper\Domains\UI\Domains\Loader UI\UI\UI_Loader.uxml" />
+    <None Include="Assets\Whisper\Domains\UI\UI\USS\Buttons.uss" />
+    <None Include="Assets\Whisper\Domains\UI\Domains\Dialog UI\UI\UI_Dialog.uxml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -399,22 +405,6 @@
     </Reference>
     <Reference Include="Zenject-usage">
       <HintPath>Assets\Plugins\Zenject\Source\Usage\Zenject-usage.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Pdb">
-      <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Pdb.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Rocks">
-      <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Rocks.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Mdb">
-      <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Mdb.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil">
-      <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
@@ -943,12 +933,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Zenject-ReflectionBaking-Editor.csproj" />
     <ProjectReference Include="Zenject.csproj" />
     <ProjectReference Include="Zenject-Editor.csproj" />
-    <ProjectReference Include="Zenject-PoolMonitor-Editor.csproj" />
     <ProjectReference Include="Udar.Web.csproj" />
-    <ProjectReference Include="Whisper.Web.csproj" />
+    <ProjectReference Include="Whisper.csproj" />
+    <ProjectReference Include="Whisper.UI.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>

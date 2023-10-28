@@ -162,3 +162,69 @@
     letter-spacing: 5px;
     scale: 0.99 0.99;
 }
+
+.positive-button {
+    background-color: rgb(88, 101, 242);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    height: 40px;
+    width: 200px;
+    -unity-font-style: bold;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    -unity-text-outline-width: 0;
+    letter-spacing: 5px;
+}
+
+.positive-button:hover {
+    background-color: rgb(88, 107, 242);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    height: 40px;
+    width: 200px;
+    -unity-font-style: bold;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    -unity-text-outline-width: 0;
+    letter-spacing: 5px;
+    scale: 1.02 1.02;
+}
+
+.positive-button:active {
+    background-color: rgb(88, 85, 242);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    height: 40px;
+    width: 200px;
+    -unity-font-style: bold;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    -unity-text-outline-width: 0;
+    letter-spacing: 5px;
+    scale: 0.99 0.99;
+}
+
+.cursor-button {
+}
+
+.cursor-button:hover {
+    cursor: url('project://database/Assets/Textures/Cursur_Clicker.png?fileID=2800000&guid=4d676bb2560f4a744b67acb72832a7b0&type=3#Cursur_Clicker');
+}

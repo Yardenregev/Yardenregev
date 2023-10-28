@@ -1,11 +1,11 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/USS/ui-main.uss?fileID=7433441132597879392&amp;guid=9682a6bfe0f2f7c47963e61311a49e7f&amp;type=3#ui-main" />
-    <ui:VisualElement name="Horizontal" style="align-items: flex-start; flex-direction: row;">
+    <Style src="project://database/Assets/Whisper/Domains/UI/UI/USS/Buttons.uss?fileID=7433441132597879392&amp;guid=9682a6bfe0f2f7c47963e61311a49e7f&amp;type=3#Buttons" />
+    <ui:VisualElement name="Horizontal" style="align-items: flex-start; flex-direction: row; background-color: rgb(37, 45, 71);">
         <ui:VisualElement name="Left" style="align-items: flex-start; justify-content: flex-start; flex-grow: 1;">
-            <ui:Button text="Record" display-tooltip-when-elided="true" enable-rich-text="true" name="StartRecord_Button" class="start-record-button">
-                <ui:Label display-tooltip-when-elided="true" style="background-image: url(&apos;project://database/Assets/Sprites/Record_Icon.png?fileID=2800000&amp;guid=6a3f2bddf5e64b34099e8555fc4e8f62&amp;type=3#Record_Icon&apos;); position: absolute; top: 25%; width: 20px; height: 20px; left: 40px;" />
+            <ui:Button text="Record" display-tooltip-when-elided="true" enable-rich-text="true" name="StartRecording_Button" class="start-record-button cursor-button">
+                <ui:Label display-tooltip-when-elided="true" style="background-image: url(&apos;project://database/Assets/Whisper/Domains/UI/Sprites/UI_Record.png?fileID=2800000&amp;guid=6a3f2bddf5e64b34099e8555fc4e8f62&amp;type=3#UI_Record&apos;); position: absolute; top: 25%; width: 20px; height: 20px; left: 40px;" />
             </ui:Button>
-            <ui:Button text="Recording..." display-tooltip-when-elided="true" enable-rich-text="true" name="Recording_Button" class="recording-button" style="display: flex; visibility: visible;" />
+            <ui:Button text="Stop" display-tooltip-when-elided="true" enable-rich-text="true" name="StopRecording_Button" class="recording-button cursor-button" style="display: none;" />
             <ui:ListView focusable="true" />
         </ui:VisualElement>
         <ui:VisualElement name="Right" style="flex-grow: 1; min-width: 50%;">

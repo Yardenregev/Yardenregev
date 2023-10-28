@@ -1,9 +1,9 @@
 {
-    "name": "Whisper.Web",
-    "rootNamespace": "",
+    "name": "Whisper.UI",
+    "rootNamespace": "Whisper.UI",
     "references": [
         "GUID:dc8d1bc146bd9b242ba0e8596c31b515",
-        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4"
+        "GUID:6b66e947a2f7e1342ae5280e1df07c94"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

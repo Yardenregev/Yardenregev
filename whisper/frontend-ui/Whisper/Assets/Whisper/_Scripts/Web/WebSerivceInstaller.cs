@@ -1,6 +1,7 @@
+using Udar.Web;
 using Zenject;
 
-namespace Whisper.Web
+namespace Whisper
 {
     public class WebSerivceInstaller:MonoInstaller
     {

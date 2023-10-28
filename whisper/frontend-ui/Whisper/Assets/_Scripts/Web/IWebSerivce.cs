@@ -2,7 +2,7 @@ using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Whisper
+namespace Udar.Web
 {
     public interface IWebService
     {
