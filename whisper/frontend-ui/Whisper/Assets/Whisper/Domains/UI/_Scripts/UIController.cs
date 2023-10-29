@@ -92,6 +92,7 @@ namespace Whisper.UI
             }
             catch (WebException exe)
             {
+                _dialogUI.Show("Something went wrong", exe.ErrorMessage + "\n" + "error code: " + exe.ErrorCode, null);
                 Debug.LogErrorFormat(exe.ErrorMessage + ", error code= " + exe.ErrorCode);
                 Debug.LogException(exe);
             }
