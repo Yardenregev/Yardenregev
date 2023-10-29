@@ -11,7 +11,7 @@ def main(shared_data_holder:Queue, recorder:Recorder, thread_coordinator:ThreadC
     file_manager = FileManager(recorder=recorder, base_filename=base_filename)
     file_index = 0
     file_count = 0
-    while not thread_coordinator.shared_exit_flag:
+    while not thread_coordinator.shared_exit_flag.value:
         try:
             data = shared_data_holder.get(timeout=(config.RECORDING_LENGTH + 5))
         except Empty:
