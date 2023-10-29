@@ -23,15 +23,27 @@ class Whisper():
     def __init__(self):
         self.thread_coordinator = ThreadCoordinator()
 
-    def start_recording(self):
+    def start_recording(self, pipe_conn):
         recorder = Recorder()
         shared_data_holder = Queue()
         devices = recorder.get_available_devices()
         device_name = "Stereo Mix (Realtek(R) Audio)"
         ret = recorder.set_device(device_name)
         if not ret:
-            print("Failed to find device ", device_name)
+            ret_message = "Failed to find device " + device_name
+            ret_status = 0
+            ret_obj = (ret_status,ret_message)
+            pipe_conn.send(ret_obj)
+            pipe_conn.close()
         else:
+            ret_message = "Recording started successfully"
+            ret_status = 1
+            ret_obj = (ret_status,ret_message)
+
+            pipe_conn.send(ret_obj)
+            pipe_conn.close()
+
+
             event = Event()
             record_thread = threading.Thread(target=record.main,args=[shared_data_holder,recorder, self.thread_coordinator],daemon=True)
             filemaker_thread = threading.Thread(target=filemaker.main,args=[shared_data_holder,recorder, self.thread_coordinator, event], daemon=True)
