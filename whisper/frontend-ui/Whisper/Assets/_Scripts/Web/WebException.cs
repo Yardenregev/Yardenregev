@@ -7,7 +7,7 @@ namespace Udar.Web
     {
         public UnityWebRequest Request;
         public long ErrorCode => Request.responseCode;
-        public string ErrorMessage => Request.error;
+        public string ErrorMessage => Request.downloadHandler.text;
         public WebException(UnityWebRequest request)
         {
             Request = request;
