@@ -21,7 +21,7 @@ namespace Whisper.UI
             _okButton = _uiDocument.rootVisualElement.Q<Button>("Ok_Button");
             _titleLabel = _uiDocument.rootVisualElement.Q<Label>("Title_Label");
             _bodyLabel = _uiDocument.rootVisualElement.Q<Label>("Body_Label");
-            
+
             Hide();
         }
         private void OnEnable()
@@ -45,14 +45,15 @@ namespace Whisper.UI
         public void Hide()
         {
             _uiDocument.rootVisualElement.style.display = DisplayStyle.None;
+
         }
 
         public void Show(string title, string body, Action okCallback)
         {
             _titleLabel.text = title;
             _bodyLabel.text = body;
-            _okCallback=okCallback;
-            
+            _okCallback = okCallback;
+
             _uiDocument.rootVisualElement.style.display = DisplayStyle.Flex;
         }
     }

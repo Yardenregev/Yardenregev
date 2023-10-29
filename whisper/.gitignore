@@ -65,6 +65,9 @@ pyvenv.cfg
 [Ee]xportPackage/
 [Tt]humbs/
 
+
+!frontend-ui/Builds/*
+
 # macOS
 \._*
 
