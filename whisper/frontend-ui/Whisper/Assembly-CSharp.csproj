@@ -62,11 +62,11 @@
     <Analyzer Include="C:\Users\Ofir\.vscode\extensions\visualstudiotoolsforunity.vstuc-0.9.2\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Whisper\Domains\UI\Domains\Loader UI\_Scripts\LoaderUIInstaller.cs" />
+    <Compile Include="Assets\Whisper\Domains\UI\Domains\Dialog UI\_Scripts\DialogUIInstaller.cs" />
     <Compile Include="Assets\Whisper\Domains\UI\Domains\Loader UI\_Scripts\LoaderUI.cs" />
     <Compile Include="Assets\Whisper\Domains\UI\Domains\Loader UI\_Scripts\LoaderRotator.cs" />
     <Compile Include="Assets\Whisper\Domains\UI\Domains\Dialog UI\_Scripts\DialogUI.cs" />
-    <Compile Include="Assets\Whisper\Domains\UI\Domains\Dialog UI\_Scripts\DialogUIInstaller.cs" />
+    <Compile Include="Assets\Whisper\Domains\UI\Domains\Loader UI\_Scripts\LoaderUIInstaller.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Whisper\Domains\UI\UI\UI_Recorder.uxml" />
@@ -74,6 +74,7 @@
     <None Include="Assets\Whisper\Domains\UI\Domains\Loader UI\UI\UI_Loader.uxml" />
     <None Include="Assets\Whisper\Domains\UI\UI\USS\Buttons.uss" />
     <None Include="Assets\Whisper\Domains\UI\Domains\Dialog UI\UI\UI_Dialog.uxml" />
+    <None Include="Assets\Whisper\Domains\UI\UI\USS\ScrollView.uss" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -938,11 +939,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Zenject.csproj" />
-    <ProjectReference Include="Zenject-Editor.csproj" />
-    <ProjectReference Include="Udar.Web.csproj" />
     <ProjectReference Include="Whisper.csproj" />
+    <ProjectReference Include="Zenject.csproj" />
+    <ProjectReference Include="Udar.Web.csproj" />
     <ProjectReference Include="Whisper.UI.csproj" />
+    <ProjectReference Include="Zenject-Editor.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>

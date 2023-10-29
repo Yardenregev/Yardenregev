@@ -63,9 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Whisper\_Scripts\Web\WebSerivceInstaller.cs" />
-    <Compile Include="Assets\Whisper\_Scripts\Web\WeAPIMethods.cs" />
-    <Compile Include="Assets\Whisper\_Scripts\Web\WebURL.cs" />
     <Compile Include="Assets\Whisper\_Scripts\Web\RecordRequestService.cs" />
+    <Compile Include="Assets\Whisper\_Scripts\Web\WebURL.cs" />
+    <Compile Include="Assets\Whisper\_Scripts\Web\WeAPIMethods.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Whisper\_Scripts\Whisper.asmdef" />

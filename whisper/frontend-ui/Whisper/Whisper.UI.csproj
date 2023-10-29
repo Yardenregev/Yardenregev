@@ -62,9 +62,9 @@
     <Analyzer Include="C:\Users\Ofir\.vscode\extensions\visualstudiotoolsforunity.vstuc-0.9.2\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Whisper\Domains\UI\_Scripts\IDialogUI.cs" />
     <Compile Include="Assets\Whisper\Domains\UI\_Scripts\UIController.cs" />
     <Compile Include="Assets\Whisper\Domains\UI\_Scripts\ILoaderUI.cs" />
-    <Compile Include="Assets\Whisper\Domains\UI\_Scripts\IDialogUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Whisper\Domains\UI\_Scripts\Whisper.UI.asmdef" />
