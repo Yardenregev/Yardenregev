@@ -1,4 +1,5 @@
 import json
+import os
 
 from flask import Flask, Response
 from my_whisper import Whisper
@@ -41,9 +42,14 @@ def stop_recording():
     else:
         whisper.stop_recording()
         recording_process.join()
+        recording_running = False
         try:
-            with open('../timestamps.json', 'r') as timestamps_file:
+            current_directory = os.path.dirname(os.path.abspath(__file__ ))
+            file_path = os.path.join(current_directory, '..', 'timestamps.json')
+            print("file path: " + file_path)
+            with open(file_path, 'r') as timestamps_file:
                 data = json.load(timestamps_file)
+                print(type(data))
                 return Response(status=200, response=data)
         except FileNotFoundError:
             return Response(status=500, response="Something went wrong with making timestamps.json")
