@@ -13,6 +13,7 @@ class Recorder:
         self.channels = channels
         self.rate = rate
         self.device = device
+        self.stream = None
 
         self.audio = pyaudio.PyAudio()
     
@@ -53,7 +54,6 @@ class Recorder:
                     dev_index = dev['index']
         
         if dev_index is None:
-            # raise NotEnabledStereoMixException() 
             return False
         self.device = dev_index
         return True

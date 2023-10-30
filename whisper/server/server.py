@@ -12,10 +12,13 @@ whisper = Whisper()
 
 @app.route("/Record/Start",methods=["POST"])
 def start_recording():
-    # return Response(status=400, response="Record success")
+    global recording_running
+    global recording_process
+    global whisper
+
     if not recording_running:
         parent_conn, child_conn = Pipe()
-        recording_process = Process(target=whisper.start_recording, args=(child_conn))
+        recording_process = Process(target=whisper.start_recording, args=(child_conn,))
         recording_process.start()
         recording_running = True
         ret_obj = parent_conn.recv()
@@ -29,6 +32,9 @@ def start_recording():
 
 @app.route("/Record/Stop",methods=["GET"])
 def stop_recording():
+    global recording_running
+    global recording_process
+    global whisper
     
     if not recording_running:
         return Response(status=400, response="No recording running")
