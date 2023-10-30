@@ -49,8 +49,7 @@ def stop_recording():
             print("file path: " + file_path)
             with open(file_path, 'r') as timestamps_file:
                 data = json.load(timestamps_file)
-                print(type(data))
-                return Response(status=200, response=data)
+                return Response(status=200, response=json.dumps(data))
         except FileNotFoundError:
             return Response(status=500, response="Something went wrong with making timestamps.json")
 
