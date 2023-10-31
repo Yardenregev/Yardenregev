@@ -9,9 +9,9 @@ import models.transcribe as transcribe
 
 from utils.recorder import Recorder
 from utils.thread_coordinator import ThreadCoordinator
+from utils.process_return_obj import ProcessReturnObject
 
-
-class Whisper():
+class Excerpta():
     def __init__(self):
         self.thread_coordinator = ThreadCoordinator()
 
@@ -21,18 +21,19 @@ class Whisper():
         devices = recorder.get_available_devices()
         device_name = "Stereo Mix (Realtek(R) Audio)"
         ret = recorder.set_device(device_name)
+        return_obj = ProcessReturnObject()
         if not ret:
             ret_message = "Failed to find device " + device_name
-            ret_status = 0
-            ret_obj = (ret_status,ret_message)
-            pipe_conn.send(ret_obj)
+            return_obj.status = False
+            return_obj.message = ret_message
+            pipe_conn.send(return_obj)
             pipe_conn.close()
         else:
             ret_message = "Recording started successfully"
-            ret_status = 1
-            ret_obj = (ret_status,ret_message)
+            return_obj.status = True
+            return_obj.message = ret_message
 
-            pipe_conn.send(ret_obj)
+            pipe_conn.send(return_obj)
             pipe_conn.close()
 
 

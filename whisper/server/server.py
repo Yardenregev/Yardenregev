@@ -1,9 +1,12 @@
 import json
 import os
 
+from http import HTTPStatus
 from flask import Flask, Response
-from models.my_whisper import Whisper
 from multiprocessing import Process, Pipe
+
+from models.excerpta import Excerpta
+from utils.process_return_obj import ProcessReturnObject
 
 import configs.config as config
 
@@ -12,25 +15,26 @@ app = Flask(__name__)
 
 recording_running = False
 recording_process = None
-whisper = Whisper()
+excerpta = Excerpta()
 
 @app.route("/Record/Start",methods=["POST"])
 def start_recording():
     global recording_running
     global recording_process
-    global whisper
+    global excerpta
 
     if not recording_running:
         parent_conn, child_conn = Pipe()
-        recording_process = Process(target=whisper.start_recording, args=(child_conn,))
+        recording_process = Process(target=excerpta.start_recording, args=(child_conn,))
         recording_process.start()
         recording_running = True
-        ret_obj = parent_conn.recv()
-        status = 200
-        if ret_obj[0] == 0:
+        return_object = parent_conn.recv()
+        return_object:ProcessReturnObject
+        status = HTTPStatus.OK
+        if return_object.status == False:
             recording_process.join()
-            status = 400
-        return Response(status=status, response=ret_obj[1])
+            status = HTTPStatus.BAD_REQUEST
+        return Response(status=status, response=return_object.message)
     else:
         return "Recording already in progress"
 
@@ -38,12 +42,12 @@ def start_recording():
 def stop_recording():
     global recording_running
     global recording_process
-    global whisper
+    global excerpta
     
     if not recording_running:
-        return Response(status=400, response="No recording running")
+        return Response(status=HTTPStatus.BAD_REQUEST, response="No recording running")
     else:
-        whisper.stop_recording()
+        excerpta.stop_recording()
         recording_process.join()
         recording_running = False
         try:
@@ -52,9 +56,9 @@ def stop_recording():
             print("file path: " + file_path)
             with open(file_path, 'r') as timestamps_file:
                 data = json.load(timestamps_file)
-                return Response(status=200, response=json.dumps(data))
+                return Response(status=HTTPStatus.OK, response=json.dumps(data))
         except FileNotFoundError:
-            return Response(status=500, response="Something went wrong with making timestamps.json")
+            return Response(status=HTTPStatus.INTERNAL_SERVER_ERROR, response="Something went wrong with making timestamps.json")
 
 if __name__ == "__main__":
     app.run(host=config.SERVER_HOST, port=config.SERVER_PORT,debug=True)
