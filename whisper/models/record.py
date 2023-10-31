@@ -1,6 +1,6 @@
 import traceback
 from queue import Queue
-import config
+import configs.config as config
 
 from utils.recorder import Recorder
 

@@ -2,8 +2,11 @@ import json
 import os
 
 from flask import Flask, Response
-from my_whisper import Whisper
+from models.my_whisper import Whisper
 from multiprocessing import Process, Pipe
+
+import configs.config as config
+
 
 app = Flask(__name__)
 
@@ -45,7 +48,7 @@ def stop_recording():
         recording_running = False
         try:
             current_directory = os.path.dirname(os.path.abspath(__file__ ))
-            file_path = os.path.join(current_directory, '..', 'timestamps.json')
+            file_path = os.path.join(current_directory, '..', 'models','timestamps.json')
             print("file path: " + file_path)
             with open(file_path, 'r') as timestamps_file:
                 data = json.load(timestamps_file)
@@ -54,4 +57,4 @@ def stop_recording():
             return Response(status=500, response="Something went wrong with making timestamps.json")
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000)
+    app.run(host=config.SERVER_HOST, port=config.SERVER_PORT,debug=True)

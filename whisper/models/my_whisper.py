@@ -1,23 +1,15 @@
 import threading
 from multiprocessing import Process, Event, Value
 
-import signal
 from queue import Queue
 
-import filemaker
-import record
-import transcribe
+import models.filemaker as filemaker
+import models.record as record
+import models.transcribe as transcribe
 
 from utils.recorder import Recorder
 from utils.thread_coordinator import ThreadCoordinator
 
-
-
-# # Define a signal handler to set the shared flag when Ctrl+C is pressed
-# def signal_handler(sig, frame):
-#     print("Interrupt signal received. Exiting gracefully.")
-#     global thread_coordinator
-#     thread_coordinator.shared_exit_flag = True
 
 class Whisper():
     def __init__(self):

@@ -1,7 +1,8 @@
+import os
 from multiprocessing import Event, Value
 # import signal
 
-import config
+import configs.config as config
 from utils.transcriber import Transcriber
 from utils.filemanager import FileManager
 from utils.timestamps import TimeStamps
@@ -42,4 +43,7 @@ def main(event:Event, flag:Value):
                 file_manager.delete_file(file_name)
             break
     print("Finished Transcribing!")
-    file_manager.write_json_file("timestamps.json", timestamps.data)
+    current_directory = os.path.dirname(os.path.abspath(__file__ ))
+    file_path = os.path.join(current_directory,"timestamps.json")
+    print("transcriber file path",file_path)
+    file_manager.write_json_file(file_path, timestamps.data)

@@ -4,7 +4,7 @@ from utils.filemanager import FileManager
 from utils.recorder import Recorder
 from queue import Queue, Empty
 from utils.thread_coordinator import ThreadCoordinator
-import config
+import configs.config as config
 
 def main(shared_data_holder:Queue, recorder:Recorder, thread_coordinator:ThreadCoordinator, event:Event):
     base_filename = "recorded_audio"
