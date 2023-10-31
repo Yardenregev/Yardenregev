@@ -16,6 +16,7 @@ class Excerpta():
         self.thread_coordinator = ThreadCoordinator()
 
     def start_recording(self, pipe_conn):
+        self.thread_coordinator.shared_exit_flag.value = 0
         recorder = Recorder()
         shared_data_holder = Queue()
         devices = recorder.get_available_devices()

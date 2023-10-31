@@ -1,64 +1,21 @@
-import json
-import os
+from flask import Flask
 
-from http import HTTPStatus
-from flask import Flask, Response
-from multiprocessing import Process, Pipe
-
-from models.excerpta import Excerpta
-from utils.process_return_obj import ProcessReturnObject
+from models.models import ExcerptaModel
 
 import configs.config as config
 
 
 app = Flask(__name__)
 
-recording_running = False
-recording_process = None
-excerpta = Excerpta()
+excerpta_model = ExcerptaModel()
 
 @app.route("/Record/Start",methods=["POST"])
 def start_recording():
-    global recording_running
-    global recording_process
-    global excerpta
-
-    if not recording_running:
-        parent_conn, child_conn = Pipe()
-        recording_process = Process(target=excerpta.start_recording, args=(child_conn,))
-        recording_process.start()
-        recording_running = True
-        return_object = parent_conn.recv()
-        return_object:ProcessReturnObject
-        status = HTTPStatus.OK
-        if return_object.status == False:
-            recording_process.join()
-            status = HTTPStatus.BAD_REQUEST
-        return Response(status=status, response=return_object.message)
-    else:
-        return "Recording already in progress"
+    return excerpta_model.start_recording()
 
 @app.route("/Record/Stop",methods=["GET"])
 def stop_recording():
-    global recording_running
-    global recording_process
-    global excerpta
-    
-    if not recording_running:
-        return Response(status=HTTPStatus.BAD_REQUEST, response="No recording running")
-    else:
-        excerpta.stop_recording()
-        recording_process.join()
-        recording_running = False
-        try:
-            current_directory = os.path.dirname(os.path.abspath(__file__ ))
-            file_path = os.path.join(current_directory, '..', 'models','timestamps.json')
-            print("file path: " + file_path)
-            with open(file_path, 'r') as timestamps_file:
-                data = json.load(timestamps_file)
-                return Response(status=HTTPStatus.OK, response=json.dumps(data))
-        except FileNotFoundError:
-            return Response(status=HTTPStatus.INTERNAL_SERVER_ERROR, response="Something went wrong with making timestamps.json")
+    return excerpta_model.stop_recording()
 
 if __name__ == "__main__":
     app.run(host=config.SERVER_HOST, port=config.SERVER_PORT,debug=True)
