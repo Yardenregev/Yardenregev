@@ -1,16 +1,7 @@
-# 👋 Hey there! I'm Yarden Regev
+# 👋 Hey there!
 
 ## 🚀 About Me
-I'm a **Software Developer** specializing in **low-level systems programming, backend development**.
-
-I have experience working with **C, C++, and Python**, building efficient, scalable, and high-performance systems.
-
-## 🛠️ My Specializations
-- **Low-Level Systems Programming** – Optimized memory management, custom allocators, and OS-level interactions.
-- **Backend Engineering** – High-performance APIs, database optimization, and scalable architectures.
-- **Concurrency & Multithreading** – Thread-safe data structures and real-time processing.
-- **Networking** – Protocol implementation, socket programming, and distributed systems.
-- **Algorithm & Data Structures** – Writing efficient, optimized solutions for complex problems.
+My name is Yarden Regev, I'm a **Software Developer with 3 year of work experience**, interested in **C, C++, and Python**.
 
 ## 📂 Featured Projects
 - 🏴‍☠️ **[Pirates Speed Game](https://github.com/Yardenregev/pirates_speed_game)** – A C++ game that challenges players' reaction times and decision-making skills.
