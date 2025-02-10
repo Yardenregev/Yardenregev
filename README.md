@@ -9,7 +9,7 @@ My name is Yarden Regev, I'm a **Software Developer with 3 year of work experien
 ## 📫 Get in Touch
 📧 Email: yardenregev11@gmail.com
 
-💼 LinkedIn: [https://www.linkedin.com/in/yarden-regev-6613261b7/]
+💼 LinkedIn: [https://www.linkedin.com/in/yarden-regev]
 
 🌍 Portfolio: [https://yardenregev.github.io/portfolio_website/](https://yardenregev.github.io/portfolio_website/)
 
